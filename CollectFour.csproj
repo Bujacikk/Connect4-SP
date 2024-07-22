@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Collect4Web\**" />
+    <Compile Remove="CollectFourCore\**" />
+    <Compile Remove="CollectFour\**" />
+    <Compile Remove="UnitTestsForServices\**" />
+    <EmbeddedResource Remove="Collect4Web\**" />
+    <EmbeddedResource Remove="CollectFourCore\**" />
+    <EmbeddedResource Remove="CollectFour\**" />
+    <EmbeddedResource Remove="UnitTestsForServices\**" />
+    <None Remove="Collect4Web\**" />
+    <None Remove="CollectFourCore\**" />
+    <None Remove="CollectFour\**" />
+    <None Remove="UnitTestsForServices\**" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="\css\VyzorMain.css" media="screen" />
+
+<h1 style="font-family: 'Comic Sans MS';">CONNECT FOUR</h1>
+<br /> <br />
+
+<div class="row" style="margin-left: 100px;">
+    <div class="WidthImg">
+
+        <img src="/images/connect4/Bot.png" class="ObrazkyOdkazy rounded float-left" />
+
+        <form action="/Connect4/AddPlayerBot" method="post" class="colorOfText">
+            <input class="custoFont" type="text" name="playerName1" placeholder="Meno 1. hráča" maxlength="15" required /><br />
+            <input class="custoFont" type="number" name="difficulty" placeholder="Lvl" maxlength="1" min="1" max="3" required /><br />
+            <input class="custoFont" type="submit" /><br />
+        </form>
+    </div>
+    <div class="WidthImg">
+
+        <img src="/images/connect4/hrac.png" class="ObrazkyOdkazy rounded float-left" />
+
+        <form action="/Connect4/AddPlayersMultiplayer" method="post" class="colorOfText">
+            <input class="custoFont" type="text" name="playerName1" placeholder="Meno 1. hráča" maxlength="15" required /><br />
+            <input class="custoFont" type="text" name="playerName2" placeholder="Meno 2. hráča" maxlength="15" required /><br />
+            <input class="custoFont" type="submit" /><br />
+        </form>
+    </div>
+</div>
+

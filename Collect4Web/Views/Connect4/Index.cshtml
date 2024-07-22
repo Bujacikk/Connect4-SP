@@ -1,0 +1,173 @@
+﻿
+@model Collect4Web.Models.TransportModel
+
+@{
+    ViewData["Title"] = "Connect4";
+}
+
+<link rel="stylesheet" href="\css\Zmena.css" media="screen" />
+
+
+<div class="container-fluid">
+
+    <div>
+        <h1 class="colorOfText custoFont">CONNECT FOUR!</h1>
+        <br /> <br />
+
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <table class="BackgroundOfGameplay">
+                @for (var row = 0; row < Model.MyField.RowCount; row++)
+                {
+                    <tr>
+                        @for (var column = 0; column < Model.MyField.ColumnCount; column++)
+                        {
+
+                            @if (row == 0)
+                            {
+                                if (Model.Diff == 0)
+                                {
+                                    <td>
+                                        <a href="/Connect4/Move?token=@(column)">
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 0)
+                                            {
+                                                <img src="/images/connect4/kruh1.png" />
+                                            }
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 1)
+                                            {
+                                                <img src="/images/connect4/kruh4.png" />
+                                            }
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 2)
+                                            {
+                                                <img src="/images/connect4/kruh3.png" />
+                                            }
+                                        </a>
+                                    </td>
+                                }
+                                if (Model.Diff != 0)
+                                {
+                                    <td>
+                                        <a href="/Connect4/BotGame?token=@(column)">
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 0)
+                                            {
+                                                <img src="/images/connect4/kruh1.png" />
+                                            }
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 1)
+                                            {
+                                                <img src="/images/connect4/kruh4.png" />
+                                            }
+                                            @if (Model.MyField.GetToken(row, column).ValueInt == 2)
+                                            {
+                                                <img src="/images/connect4/kruh3.png" />
+                                            }
+                                        </a>
+                                    </td>
+                                }
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Model.MyField.GetToken(row, column).ValueInt == 0)
+                                    {
+                                        <img src="/images/connect4/kruh1.png" />
+                                    }
+                                    @if (Model.MyField.GetToken(row, column).ValueInt == 1)
+                                    {
+                                        <img src="/images/connect4/kruh4.png" />
+                                    }
+                                    @if (Model.MyField.GetToken(row, column).ValueInt == 2)
+                                    {
+                                        <img src="/images/connect4/kruh3.png" />
+                                    }
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            </table>
+
+            @if (Model.Diff == 0)
+            {
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <form action="/Connect4/AddPlayersMultiplayer?playerName1=@(Model.player1.Name)?playerName2=@(Model.player2.Name)">
+                                <input class="custoFont buttonColor" style="width:300%; margin-left:12px;" type="submit" value="Reset" />
+                            </form>
+                        </div>
+                        <div class="col-sm-2">
+                            <form action="http://localhost:51857/">
+                                <input class="custoFont buttonColor" style="width:300%; margin-left:112px;" type="submit" value="Menu" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Diff != 0)
+            {
+                <br />
+                <form action="http://localhost:51857/">
+                    <input class="custoFont buttonColor" style="width:30%; margin-left:20px;" type="submit" value="Reset" />
+                </form>
+            }
+
+            <div class="WidthScore2 col-sm">
+                <br />
+                <h2 class="colorOfText custoFont">Popis Hry</h2>
+                <p class="colorOfWhiteText custoFont">
+                    Traf sa a vyhraj! Spoločenská hra Connect 4 Shots je rýchla hra, v ktorej musíte zoradiť 4 loptičky rovnakej farby. Priprav sa a hádž! Dvaja hráči hádžu svoje loptičky naraz a snažia sa ich odraziť od stola do mriežky. Snažte sa zoradiť 4 loptičky rovnakej farby buď vodorovne, šikmo alebo zvisle. Kto bude mať 4 loptičky rovnakej farby za sebou ako prvý, vyhral!
+                </p>
+            </div>
+
+            <p class="colorOfText">
+                @Model.MyText
+            </p>
+        </div>
+
+        <div class="col-sm-2">
+            <h2 class="colorOfText custoFont">Scores</h2>
+            <ol class="float-left">
+                @foreach (var player in Model.Score)
+                {
+                    <li class="colorOfWhiteText custoFont marginLeftM30">@player.Name @player.Score</li>
+                }
+            </ol>
+        </div>
+
+        <div class="col-sm-2">
+            <h2 class="colorOfText custoFont">Hodnotenie<br>(1-5)</h2>
+
+            <br />
+            <h1 class="colorOfWhiteText custoFont" style="margin-left: -12px;">@Model.Rate </h1>
+            <br /><br />
+
+            <form action="/Connect4/SaveRate" method="post" class="colorOfWhiteText custoFont" style="margin-left: -30px">
+                Meno: <input class="custoFont " type="text" name="Meno" placeholder="Meno" maxlength="10" required /><br />
+                Score: <input class="custoFont " type="number" name="Rate" placeholder="Hodnotenie" maxlength="5" min="1" max="5" required /><br /> <br />
+                <input class="custoFont buttonColor" type="submit" /><br />
+            </form>
+        </div>
+
+        <div class="WidthScore2 col-sm-3">
+            <h2 class="colorOfText custoFont">Komentáre</h2>
+            <ol class="marginLeftKomentare">
+                @foreach (var comment in Model.Comments)
+                {
+                    <li class="colorOfWhiteText custoFont">@comment.PlayerName </li>
+
+                    <div class="PosunPlusFarba custoFont"> @comment.Commentary </div>
+                }
+            </ol>
+
+            <form action="/Connect4/SaveComment" method="post" class="colorOfText">
+                <label class="colorOfWhiteText custoFont">Meno:</label>
+                <input class="custoFont" type="text" name="Meno" placeholder="Meno" required /><br />
+                <label class="colorOfWhiteText custoFont">Komentár:</label>
+                <textarea class="custoFont " type="text" name="Komentar" cols="50" rows="3" placeholder="Doplň svoj komentár" required /> </textarea>
+                <input class="custoFont buttonColor" type="submit" /><br />
+            </form>
+        </div>
+    </div>
+</div>

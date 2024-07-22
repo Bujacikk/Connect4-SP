@@ -1,0 +1,63 @@
+﻿body {
+    background-image: url('https://acegif.com/wp-content/gif/outerspace-70.gif');
+}
+.margin{
+    margin-left: 500px;
+}
+.colorOfText {
+    color: rgb(193,185,55);
+}
+.decoration {
+    text-decoration: none;
+    color: purple;
+}
+.WidthOfGameplay {
+    width: 450px;
+}
+.BackgroundOfGameplay {
+    background-color: black;
+}
+.WidthScore {
+    width: 180px;
+}
+.WidthScore2 {
+    width: 400px;
+}
+  
+ol {
+   list-style: none;
+   counter-reset: item;
+ }
+ li {
+   counter-increment: item;
+   margin-bottom: 5px;
+ }
+ li:before {
+   content: counter(item);
+   background: rgb(17,117,136);
+   border-radius: 100%;
+   color: white;
+   width: 1.2em;
+   text-align: center;
+   display: inline-block;
+ }
+.marginLeftKomentare {
+    margin-left: -40px;
+}
+.marginLeft {
+    margin-left: -20px;
+}
+.marginLeftScore {
+    padding-left: -20px;
+}
+.PosunPlusFarba {
+    color: red;
+    margin-left: 20px;
+}
+.PosunRating {
+    margin-left: 30px;
+    font-size: 60px;
+}
+.custoFont {
+    font-family: 'Comic Sans MS';
+}
