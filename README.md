@@ -1,6 +1,3 @@
-# ConnectFour_AdriánFedor_dotNET
+# ConnectFour Schoolproject
 
-Connect four game
-
-Funguje mi zakladna cast hry.
-Potrebujem este spravit menu, score a nejak to rozdelit do 2 projektov.
+Connect four game created in dotnet/ASP.NET while studying on Technical University of Košice
